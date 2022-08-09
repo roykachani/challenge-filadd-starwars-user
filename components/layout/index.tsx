@@ -1,5 +1,5 @@
-import { Container, Typography } from '@mui/material';
 import React from 'react';
+import Footer from '../footer';
 import Navbar from '../navbar';
 
 const Layout: React.ElementType = ({ children }) => {
@@ -7,6 +7,7 @@ const Layout: React.ElementType = ({ children }) => {
     <>
       <Navbar />
       <main>{children}</main>
+      <Footer />
     </>
   );
 };

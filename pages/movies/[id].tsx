@@ -46,6 +46,7 @@ const MoviePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             alignItems="center"
             justifyContent="center"
             minHeight={{ xs: '100vh', sm: '100vh', md: '650px' }}
+            mb={18}
           >
             <RadarSpinner color="#fff" size="123" />
           </Stack>
@@ -121,7 +122,7 @@ const MoviePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             <Box alignItems="center" justifyContent="center" marginY={2}>
               {PICT.map(
                 (p, i): any =>
-                  p.name === movieData.title && (
+                  p.id == movieData.id && (
                     <Image
                       key={i}
                       height={500}

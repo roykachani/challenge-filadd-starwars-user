@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Stack } from '@mui/material';
+import { Box, Container, Grid } from '@mui/material';
 import React from 'react';
 import { MovieDataType } from '../../types/types';
 import CardMovie from './cardMovie';
@@ -24,8 +24,8 @@ const ListMovies: React.FC<Props> = ({ movies, handleClick }: Props) => {
         >
           {hasMovies &&
             movies.map((movie) => (
-              <Grid key={movie.id} spacing={3}>
-                <CardMovie movie={movie} />
+              <Grid key={movie.id}>
+                <CardMovie movie={movie} handleClick={handleClick} />
               </Grid>
             ))}
         </Grid>

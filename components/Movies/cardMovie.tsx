@@ -13,9 +13,10 @@ import { PICT } from '../../utils/constants';
 
 type Props = {
   movie: MovieDataType;
+  handleClick: (id: number) => void;
 };
 
-const CardMovie: React.FC<Props> = ({ movie }: Props) => {
+const CardMovie: React.FC<Props> = ({ movie, handleClick }: Props) => {
   return (
     <Link href={`/movies/${movie.id}`}>
       <Card
@@ -25,6 +26,9 @@ const CardMovie: React.FC<Props> = ({ movie }: Props) => {
           maxWidth: 345,
           background: 'rgb(18, 18, 18)',
           cursor: 'pointer',
+        }}
+        onClick={() => {
+          handleClick(movie.id);
         }}
       >
         {PICT.map(
@@ -66,12 +70,5 @@ const CardMovie: React.FC<Props> = ({ movie }: Props) => {
       </Card>
     </Link>
   );
-
-  // return (
-  //   <div>
-  //     {movie.title} - {movie.releaseDate}
-  //     <div>cardMovie</div>
-  //   </div>
-  // );
 };
 export default CardMovie;

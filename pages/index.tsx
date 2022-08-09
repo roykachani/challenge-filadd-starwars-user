@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import { useQuery, DefinedUseQueryResult } from '@tanstack/react-query';
 import { Container } from '@mui/material';
 
@@ -19,14 +18,10 @@ const Home: NextPage<Props> = (props: Props) => {
   const [movieId, setMovieId] = useState<number | null>(null);
   const [sortBy, setSortBy] = useState<string>('default');
 
-  const {
-    isLoading,
-    data: movies,
-    error,
-  }: DefinedUseQueryResult<MovieDataType[], Error> = useQuery<
+  const useMovies: DefinedUseQueryResult<MovieDataType[], Error> = useQuery<
     MovieDataType[],
     Error
-  >(['movies'], getMovies, {
+  >(['movies', movieId], getMovies, {
     initialData: props.movies as MovieDataType[],
     refetchOnMount: false,
     //select permite ejecutar una función para retornar los datos ej: con algún filtro o ordenamiento
@@ -48,6 +43,8 @@ const Home: NextPage<Props> = (props: Props) => {
         } else data;
       }),
   });
+
+  const { isLoading, data: movies, error } = useMovies;
 
   const handleClick = (id: number) => {
     setMovieId(id);

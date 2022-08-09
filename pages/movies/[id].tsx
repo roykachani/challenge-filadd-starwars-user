@@ -31,6 +31,7 @@ const MoviePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         }, 1500);
       },
       refetchOnMount: false,
+      cacheTime: 1000,
     }
   );
 
@@ -79,13 +80,16 @@ const MoviePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             width={{ md: 850, lg: 900 }}
             display={{ md: 'flex' }}
             alignItems="center"
-            justifyContent="flex-start"
+            justifyContent="center"
+            position="relative"
           >
             <Box
               onClick={() => router.push('/')}
               sx={{ cursor: 'pointer' }}
               display={{ xs: 'none', sm: 'none', md: 'flex' }}
               alignItems="center"
+              position="absolute"
+              left={0}
             >
               <KeyboardBackspaceIcon color="primary" fontSize="small" />
               <Typography
@@ -97,7 +101,7 @@ const MoviePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                 Back to movies
               </Typography>
             </Box>
-            <Box ml={{ md: 22 }}>
+            <Box>
               <Typography
                 variant="h1"
                 sx={{

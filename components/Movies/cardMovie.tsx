@@ -17,6 +17,7 @@ type Props = {
 };
 
 const CardMovie: React.FC<Props> = ({ movie, handleClick }: Props) => {
+  console.log(movie.id, movie.title);
   return (
     <Link href={`/movies/${movie.id}`}>
       <Card
@@ -24,7 +25,10 @@ const CardMovie: React.FC<Props> = ({ movie, handleClick }: Props) => {
           width: 350,
           height: 360,
           maxWidth: 345,
-          background: 'rgb(18, 18, 18)',
+          background: '#121212',
+          '&:hover': {
+            background: '#181818',
+          },
           cursor: 'pointer',
         }}
         onClick={() => {

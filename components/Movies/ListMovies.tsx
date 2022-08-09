@@ -19,7 +19,6 @@ const ListMovies: React.FC<Props> = ({ movies, handleClick }: Props) => {
           direction="row"
           justifyContent="center"
           alignItems="center"
-          spacing={2}
           gap={6}
         >
           {hasMovies &&

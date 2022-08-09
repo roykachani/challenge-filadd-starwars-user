@@ -17,7 +17,6 @@ type Props = {
 };
 
 const CardMovie: React.FC<Props> = ({ movie, handleClick }: Props) => {
-  console.log(movie.id, movie.title);
   return (
     <Link href={`/movies/${movie.id}`}>
       <Card

@@ -31,7 +31,7 @@ const MoviePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         }, 1500);
       },
       refetchOnMount: false,
-      cacheTime: 1000,
+      cacheTime: 500,
     }
   );
 

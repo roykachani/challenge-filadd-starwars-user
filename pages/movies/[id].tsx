@@ -49,7 +49,7 @@ const MoviePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             minHeight={{ xs: '100vh', sm: '100vh', md: '650px' }}
             mb={18}
           >
-            <RadarSpinner color="#fff" size="123" />
+            <RadarSpinner color="#fff" size={123} />
           </Stack>
         </section>
       </div>

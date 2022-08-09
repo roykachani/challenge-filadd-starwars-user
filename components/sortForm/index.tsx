@@ -11,13 +11,16 @@ type Props = {
 const SortForm = ({ sortBy, handleSortBy }: Props) => {
   return (
     <FormControl sx={{ width: 170, mt: 5, mb: 3 }}>
-      <InputLabel id="demo-simple-select-label">Ordenar por</InputLabel>
+      <InputLabel color="secondary" id="demo-simple-select-label">
+        Sort by
+      </InputLabel>
       <Select
         sx={{}}
+        color="secondary"
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         value={sortBy}
-        label="ordenar por"
+        label="sort by"
         onChange={(e) => handleSortBy(e.target.value as string)}
       >
         <MenuItem value={SORT.DESC}>A - Z</MenuItem>

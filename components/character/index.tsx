@@ -10,6 +10,9 @@ import {
   Container,
   Autocomplete,
   TextField,
+  Card,
+  CardContent,
+  CardActions,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
@@ -75,40 +78,54 @@ const Characters = (props: Props) => {
           />
         </Box>
         <Box mb={4}>
-          {filterchar.map((c, i) => (
-            <Accordion key={i}>
-              <AccordionSummary
-                sx={{ backgroud: '#121212' }}
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
+          {' '}
+          <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="flex-start"
+            gap={4}
+          >
+            {filterchar.map((c, i) => (
+              <Card
+                key={i}
+                sx={{
+                  minWidth: 275,
+                  width: 350,
+                  background: '#121212',
+                  '&:hover': {
+                    background: '#181818',
+                  },
+                }}
               >
-                <Typography variant="h6" color="secondary">
-                  {c.name}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Grid
-                  container
-                  direction="row"
-                  justifyContent="center"
-                  alignItems="center"
-                  spacing={2}
-                  gap={6}
-                >
-                  <Typography variant="body1" color="secondary">
+                <CardContent>
+                  <Typography variant="h6" color="primary" mb={2}>
+                    {c.name}
+                  </Typography>
+
+                  <Typography variant="body1" color="primary.dark" mb={1}>
                     Eye color: <b>{c.eye_color}</b>
                   </Typography>
-                  <Typography variant="body1" color="secondary">
+                  <Typography variant="body1" color="primary.dark" mb={1}>
                     Height: <b>{c.height}cm</b>
                   </Typography>
-                  <Typography variant="body1" color="secondary">
-                    Hair color: <b>{c.hair_color}</b>
+                  <Typography variant="body1" color="primary.dark" mb={1}>
+                    Hair color:{' '}
+                    <b>
+                      {c.hair_color === 'n/a'
+                        ? '-'
+                        : c.hair_color === 'none'
+                        ? '-'
+                        : c.hair_color}
+                    </b>
                   </Typography>
-                </Grid>
-              </AccordionDetails>
-            </Accordion>
-          ))}
+                  <Typography variant="body1" color="primary.dark">
+                    mass: <b>{c.mass}kg</b>
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))}
+          </Grid>
         </Box>
       </Box>
     </Stack>

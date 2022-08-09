@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { FilmResponse, MovieDataType, MovieDetail } from '../types/types';
+import { PICT } from '../utils/constants';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -24,6 +25,11 @@ export const getMovie = async (id: number): Promise<MovieDetail> => {
 
   const resMovie = await axios.get(`${API_URL}${movieId}`);
   const result = resMovie.data;
+  const newResult = PICT.filter((m) => {
+    if (m.name === result.title) {
+      return m.img;
+    }
+  });
 
   const resCharacters = result.characters.map(async (character: string) => {
     const res = await axios.get(character as string);
@@ -33,13 +39,14 @@ export const getMovie = async (id: number): Promise<MovieDetail> => {
 
   const characters = await Promise.all(resCharacters);
 
-  const movie: MovieDetail = {
+  const movie = {
     id: id,
     title: result.title,
     description: result.opening_crawl,
     producer: result.producer,
     releaseDate: result.release_date,
     characters,
+    img: newResult[0].img,
     director: result.director,
   };
 

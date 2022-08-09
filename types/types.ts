@@ -11,11 +11,12 @@ export type MovieDataType = {
 
 export type MovieDetail = {
   id: number;
-  title: string | null;
+  title: string;
   director: string | null;
   producer: string | null;
   description: string | null;
   releaseDate: string;
+  img: string | null;
   characters: CharacterResponse[];
 };
 

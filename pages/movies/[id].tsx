@@ -120,19 +120,14 @@ const MoviePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             }}
           >
             <Box alignItems="center" justifyContent="center" marginY={2}>
-              {PICT.map(
-                (p, i): any =>
-                  p.id == movieData.id && (
-                    <Image
-                      key={i}
-                      height={500}
-                      width={350}
-                      src={`/${p.img}`}
-                      alt={p.name}
-                      priority
-                    />
-                  )
-              )}
+              <Image
+                key={movieData.id}
+                height={500}
+                width={350}
+                src={`/${movieData.img}`}
+                alt={movieData.title}
+                priority
+              />
             </Box>
             <Box
               width={{ xs: 350, sm: 300, lg: 500 }}
